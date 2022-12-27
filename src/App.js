@@ -2,6 +2,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import TaskCard from './Components/TaskCard';
 import Title from './Components/Title';
+import NavLinks from './Components/NavLinks';
 
 function App() {
 
@@ -32,11 +33,15 @@ function App() {
       <div className="row">
 
         <div className="col s3 grey">
-          hello
+          {days.map(day => {
+            return <NavLinks day={day} />
+          })}
         </div>
 
         <div className="col s9 teal">
-          <TaskCard tasks={tasks} />
+          {tasks.map(task => {
+            return <TaskCard task={task} />
+          })}
         </div>
 
       </div>
