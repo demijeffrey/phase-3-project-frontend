@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import TaskCard from './Components/TaskCard';
+import Title from './Components/Title';
 
 function App() {
 
@@ -27,10 +28,11 @@ function App() {
 
   return (
     <div>
+      <Title />
       <div className="row">
 
         <div className="col s3 grey">
-          
+          hello
         </div>
 
         <div className="col s9 teal">
