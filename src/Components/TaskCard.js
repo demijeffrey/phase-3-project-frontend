@@ -19,15 +19,15 @@ function TaskCard ( {task} ) {
 
     return(
         <div class="row">
-        <div class="col s12 m6">
+        <div class="col s3 m4">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
               <span class="card-title">{task.task_name}</span>
               <p>{day}</p>
             </div>
             <div class="card-action">
-              <a href="#">This is a link</a>
-              <a href="#">This is a link</a>
+              <a href="#">Completed ✔</a>
+              <a href="#">Delete</a>
             </div>
           </div>
         </div>

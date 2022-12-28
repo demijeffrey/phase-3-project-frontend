@@ -1,8 +1,13 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import TaskCard from './Components/TaskCard';
-import Title from './Components/Title';
+import NavBar from './Components/NavBar';
 import NavLinks from './Components/NavLinks';
+import { Routes, Switch, Route } from "react-router-dom";
+import Categories from './Components/Categories';
+import NewTaskForm from './Components/NewTaskForm';
+import AllTasks from './Components/AllTasks';
+
 
 function App() {
 
@@ -29,22 +34,12 @@ function App() {
 
   return (
     <div>
-      <Title />
-      <div className="row">
-
-        <div className="col s3 grey">
-          {days.map(day => {
-            return <NavLinks day={day} />
-          })}
-        </div>
-
-        <div className="col s9 teal">
-          {tasks.map(task => {
-            return <TaskCard task={task} />
-          })}
-        </div>
-
-      </div>
+      <NavBar />
+      <Routes>
+        <Route exact path='/categories' element={<Categories days={days} tasks={tasks} />} />
+        <Route exact path='/new-task' element={<NewTaskForm />} />
+        <Route exact path="/all-tasks" element={<AllTasks tasks={tasks} />} />
+      </Routes>
     </div>
   );
 }
