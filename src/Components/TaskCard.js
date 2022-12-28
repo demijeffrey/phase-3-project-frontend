@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import '../App.css';
 
 function TaskCard ({ task, removeTask }) {
 
@@ -26,8 +27,8 @@ function TaskCard ({ task, removeTask }) {
     
 
     return(
-        <div class="row">
-        <div class="col s3 m4">
+        <div class="cards center">
+        <div class="col s12 m6">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
               <span class="card-title">{task.task_name}</span>
