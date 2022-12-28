@@ -47,7 +47,7 @@ function App() {
       <Routes>
         <Route exact path='/categories' element={<Categories days={days} tasks={tasks} removeTask={removeTask} />} />
         <Route exact path='/new-task' element={<NewTaskForm />} addToTasks={addToTasks} />
-        <Route exact path="/all-tasks" element={<AllTasks tasks={tasks} removeTask={removeTask} />} />
+        <Route exact path="/" element={<AllTasks tasks={tasks} removeTask={removeTask} />} />
       </Routes>
     </div>
   );
