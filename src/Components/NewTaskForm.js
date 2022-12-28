@@ -1,17 +1,44 @@
-function NewTaskForm() {
+import { useState } from "react"
+
+function NewTaskForm({ addToTasks }) {
+
+    const [newTask, setNewTask] = useState('')
+    const [newDay, setNewDay] = useState('')
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        fetch("http://localhost:9292/tasks", {
+          method: "POST",
+          headers: {
+            "Content-Type" : "application/json",
+          },
+          body: JSON.stringify({
+            task_name: newTask,
+            day_id: newDay,
+          }),
+        })
+        .then(res => res.json)
+        .then(newTaskCard => {
+          addToTasks(newTaskCard)
+          setNewDay('')
+          setNewTask('')
+        })
+      }
+
+
     return (
-        <form className="center">
-            <textarea className="white" type="" placeholder="new task here" />
+        <form className="center" onSubmit={handleSubmit}>
+            <textarea className="white" type="" placeholder="new task here" value={newTask} onChange={(e) => setNewTask(e.target.value)} />
             <br />
-            <select class="browser-default">
+            <select class="browser-default" onChange={(e) => setNewDay(e.target.value)}>
                 <option value="" disabled selected>Select Day</option>
-                <option value="1">Sunday</option>
-                <option value="2">Monday</option>
-                <option value="3">Tuesday</option>
-                <option value="4">Wednesday</option>
-                <option value="5">Thursday</option>
-                <option value="6">Friday</option>
-                <option value="7">Saturday</option>
+                <option value="15">Sunday</option>
+                <option value="16">Monday</option>
+                <option value="17">Tuesday</option>
+                <option value="18">Wednesday</option>
+                <option value="19">Thursday</option>
+                <option value="20">Friday</option>
+                <option value="21">Saturday</option>
             </select>
             <br />
             <input type="submit" />

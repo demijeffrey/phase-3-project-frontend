@@ -32,12 +32,33 @@ function App() {
   }, [])
   // console.log(tasks)
 
+  // function handleSubmit(e, newTask, newDay) {
+  //   e.preventDefault()
+  //   fetch("http://localhost:9292/tasks", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type" : "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       task_name: newTask,
+  //       day_id: newDay,
+  //     }),
+  //   })
+  //   .then(res => res.json)
+  //   .then(newTaskCard => {
+  //     setTasks([...tasks, newTaskCard])
+  //   })
+  // }
+  function addToTasks(newTask) {
+    setTasks([...tasks, newTask])
+  }
+
   return (
     <div>
       <NavBar />
       <Routes>
         <Route exact path='/categories' element={<Categories days={days} tasks={tasks} />} />
-        <Route exact path='/new-task' element={<NewTaskForm />} />
+        <Route exact path='/new-task' element={<NewTaskForm />} addToTasks={addToTasks} />
         <Route exact path="/all-tasks" element={<AllTasks tasks={tasks} />} />
       </Routes>
     </div>
