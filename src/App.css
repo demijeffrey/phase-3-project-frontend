@@ -47,3 +47,7 @@
 .card-container {
   display: flex;
 }
+
+.task-form {
+  margin-top: 200px;
+}

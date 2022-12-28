@@ -27,7 +27,7 @@ function NewTaskForm({ addToTasks }) {
 
 
     return (
-        <form className="center" onSubmit={handleSubmit}>
+        <form className="container center task-form" onSubmit={handleSubmit}>
             <textarea className="white" type="" placeholder="new task here" value={newTask} onChange={(e) => setNewTask(e.target.value)} />
             <br />
             <select class="browser-default" onChange={(e) => setNewDay(e.target.value)}>
