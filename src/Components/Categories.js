@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import NavLinks from "./NavLinks"
+import DayLinks from "./DayLinks"
 import TaskCard from "./TaskCard"
 
-function Categories({ days, tasks }) {
+function Categories({ days, tasks, removeTask }) {
 
     const [day, setDay] = useState('')
     const [dayTasks, setDayTasks] = useState('')
@@ -18,7 +18,7 @@ function Categories({ days, tasks }) {
 
             <div className="col s3 grey">
                 {days.map(day => {
-                    return <NavLinks day={day} handleClick={handleClick} />
+                    return <DayLinks day={day} handleClick={handleClick} />
                 })}
             </div>
 
@@ -30,7 +30,7 @@ function Categories({ days, tasks }) {
             <div className="col s9 teal">
                 {tasks.map(task => {
                     if(task.day_id === day.id){
-                        return <TaskCard task={task} />
+                        return <TaskCard task={task} removeTask={removeTask} />
                     }
                 })}
             </div>

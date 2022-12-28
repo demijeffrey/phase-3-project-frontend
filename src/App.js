@@ -2,7 +2,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import TaskCard from './Components/TaskCard';
 import NavBar from './Components/NavBar';
-import NavLinks from './Components/NavLinks';
+import NavLinks from './Components/DayLinks';
 import { Routes, Switch, Route } from "react-router-dom";
 import Categories from './Components/Categories';
 import NewTaskForm from './Components/NewTaskForm';
@@ -32,34 +32,22 @@ function App() {
   }, [])
   // console.log(tasks)
 
-  // function handleSubmit(e, newTask, newDay) {
-  //   e.preventDefault()
-  //   fetch("http://localhost:9292/tasks", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type" : "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       task_name: newTask,
-  //       day_id: newDay,
-  //     }),
-  //   })
-  //   .then(res => res.json)
-  //   .then(newTaskCard => {
-  //     setTasks([...tasks, newTaskCard])
-  //   })
-  // }
   function addToTasks(newTask) {
     setTasks([...tasks, newTask])
+  }
+
+  function removeTask(id) {
+    const filteredTasks = tasks.filter(task => task.id !== id)
+    setTasks(filteredTasks)
   }
 
   return (
     <div>
       <NavBar />
       <Routes>
-        <Route exact path='/categories' element={<Categories days={days} tasks={tasks} />} />
+        <Route exact path='/categories' element={<Categories days={days} tasks={tasks} removeTask={removeTask} />} />
         <Route exact path='/new-task' element={<NewTaskForm />} addToTasks={addToTasks} />
-        <Route exact path="/all-tasks" element={<AllTasks tasks={tasks} />} />
+        <Route exact path="/all-tasks" element={<AllTasks tasks={tasks} removeTask={removeTask} />} />
       </Routes>
     </div>
   );

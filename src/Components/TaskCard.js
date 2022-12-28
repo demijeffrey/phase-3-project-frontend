@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-function TaskCard ( {task} ) {
+function TaskCard ({ task, removeTask }) {
 
     // console.log(task.day_id)
 
@@ -17,6 +17,14 @@ function TaskCard ( {task} ) {
         fetchedDay()
     }, [])
 
+    function handleDelete(id) {
+        fetch(`http://localhost:9292/tasks/${id}`, {
+            method: "DELETE"
+        })
+        removeTask(id)
+    }
+    
+
     return(
         <div class="row">
         <div class="col s3 m4">
@@ -27,7 +35,7 @@ function TaskCard ( {task} ) {
             </div>
             <div class="card-action">
               <a href="#">Completed ✔</a>
-              <a href="#">Delete</a>
+              <a href="#" onClick={() => handleDelete(task.id)}>Delete</a>
             </div>
           </div>
         </div>

@@ -14,15 +14,3 @@ function NavBar() {
 }
 
 export default NavBar
-
-// <NavLink
-// to="/"
-// exact
-// className="linkStyles"
-// style={linkStyles}
-// activeStyle={{
-// background: "grey",
-// }}
-// >
-// Home
-// </NavLink>
