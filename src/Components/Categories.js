@@ -18,13 +18,13 @@ function Categories({ days, tasks, removeTask, updateTask }) {
 
             <div className="col s2 grey">
                 {days.map(day => {
-                    return <DayLinks day={day} handleClick={handleClick} />
+                    return <DayLinks key={day.id} day={day} handleClick={handleClick} />
                 })}
             </div>
             <div className="col s10 teal">
                 {tasks.map(task => {
                     if(task.day_id === day.id){
-                        return <TaskCard task={task} removeTask={removeTask} updateTask={updateTask} />
+                        return <TaskCard key={task.id} task={task} removeTask={removeTask} updateTask={updateTask} />
                     }
                 })}
             </div>

@@ -12,7 +12,7 @@ function AllTasks({ tasks, removeTask }) {
             </div>
             <div className="">
                 {displayTasks.map(task => {
-                    return <TaskCard task={task} removeTask={removeTask} />
+                    return <TaskCard key={task.id} task={task} removeTask={removeTask} />
                 })}
             </div>
         </div>
