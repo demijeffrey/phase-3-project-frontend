@@ -59,15 +59,15 @@ function TaskCard ({ task, removeTask, updateTask }) {
 
     return(
       <div>
-        <div class="container center">
-          <div class="col s12 m6">
+        <div className="container center">
+          <div className="col s12 m6">
           {isTrue ? <EditTaskForm task={task} handleSubmit={handleSubmit} /> : null}
-            <div class="card blue-grey darken-1">
-              <div class="card-content white-text">
-                <span class="card-title">{task.task_name}</span>
+            <div className="card blue-grey darken-1">
+              <div className="card-content white-text">
+                <span className="card-title">{task.task_name}</span>
                 <p>{day}</p>
               </div>
-              <div class="card-action">
+              <div className="card-action">
                 <a href="#" onClick={() => editClick(task.id)}>Edit ✎</a>
                 <a href="#" onClick={() => handleDelete(task.id)}>Delete</a>
               </div>

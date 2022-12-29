@@ -8,7 +8,7 @@ function EditTaskForm({ task, handleSubmit }) {
     return (
         <form onSubmit={(e) => handleSubmit(e, editedDay, editedTaskName, task)}>
             <input className="white" value={editedTaskName} onChange={e => setEditedTaskName(e.target.value)} />
-            <select class="browser-default" onChange={e => setEditedDay(e.target.value)}>
+            <select className="browser-default" onChange={e => setEditedDay(e.target.value)}>
                  <option value="" disabled selected>Select Day</option>
                  <option value="15">Sunday</option>
                  <option value="16">Monday</option>
