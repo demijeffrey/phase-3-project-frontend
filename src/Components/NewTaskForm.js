@@ -1,12 +1,10 @@
 import { useState } from "react"
-import { useNavigate } from "react-router"
 
 function NewTaskForm({ addToTasks }) {
 
     const [newTask, setNewTask] = useState('')
     const [newDay, setNewDay] = useState('')
-
-    const navigate = useNavigate()
+    const [isTrue, setIsTrue] = useState(false)
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -26,11 +24,12 @@ function NewTaskForm({ addToTasks }) {
         })
         setNewDay("")
         setNewTask("")
-        navigate('/all-tasks')
+        setIsTrue(true)
       }
 
 
     return (
+      <div>
         <form className="container center task-form" onSubmit={handleSubmit}>
             <textarea className="white" type="" placeholder="new task here" value={newTask} onChange={(e) => setNewTask(e.target.value)} />
             <br />
@@ -47,6 +46,9 @@ function NewTaskForm({ addToTasks }) {
             <br />
             <input type="submit" />
         </form>
+        <br />
+        {isTrue ? <h5 className="center">Task successfully added!</h5> : null}
+      </div>
     )
 }
 

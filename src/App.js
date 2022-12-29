@@ -32,8 +32,8 @@ function App() {
   }, [])
   // console.log(tasks)
 
-  function addToTasks(newTask) {
-    setTasks([...tasks, newTask])
+  function addToTasks(newTaskCard) {
+    setTasks([...tasks, newTaskCard])
   }
 
   function removeTask(id) {
