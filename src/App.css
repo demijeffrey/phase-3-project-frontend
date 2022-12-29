@@ -49,10 +49,16 @@
 }
 
 .task-form {
-  margin-top: 200px;
+  margin-top: 10px;
 }
 
 .task-header {
   margin-top: 200px;
   color: rgb(43, 44, 97)
+}
+
+.new-task-header {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  color: rgb(43, 44, 97);
 }

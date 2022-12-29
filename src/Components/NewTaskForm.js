@@ -30,6 +30,7 @@ function NewTaskForm({ addToTasks }) {
 
     return (
       <div>
+        <h4 className="center new-task-header">New Task</h4>
         <form className="container center task-form" onSubmit={handleSubmit}>
             <textarea className="white" type="" placeholder="new task here" value={newTask} onChange={(e) => setNewTask(e.target.value)} />
             <br />
