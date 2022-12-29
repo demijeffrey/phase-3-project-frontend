@@ -1,9 +1,12 @@
 import { useState } from "react"
+import { useNavigate } from "react-router"
 
 function NewTaskForm({ addToTasks }) {
 
     const [newTask, setNewTask] = useState('')
     const [newDay, setNewDay] = useState('')
+
+    const navigate = useNavigate()
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -23,6 +26,7 @@ function NewTaskForm({ addToTasks }) {
         })
         setNewDay("")
         setNewTask("")
+        navigate('/all-tasks')
       }
 
 
