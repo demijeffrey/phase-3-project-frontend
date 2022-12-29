@@ -3,13 +3,12 @@ import { useState } from "react"
 function EditTaskForm({ task, handleSubmit }) {
 
     const [editedTaskName, setEditedTaskName] = useState(task.task_name)
-    const [editedDay, setEditedDay] = useState('')
+    const [editedDay, setEditedDay] = useState(task.day_id)
 
     return (
         <form onSubmit={(e) => handleSubmit(e, editedDay, editedTaskName, task)}>
             <input className="white" value={editedTaskName} onChange={e => setEditedTaskName(e.target.value)} />
-            <select className="browser-default" onChange={e => setEditedDay(e.target.value)}>
-                 <option value="" disabled selected>Select Day</option>
+            <select className="browser-default" value={editedDay} onChange={e => setEditedDay(e.target.value)}>
                  <option value="15">Sunday</option>
                  <option value="16">Monday</option>
                  <option value="17">Tuesday</option>
