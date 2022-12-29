@@ -7,7 +7,7 @@ function AllTasks({ tasks, removeTask }) {
     return(
         <div>
             <div className="teal">
-                <h3 className="center grey-text text-darken-4">All Tasks This Week</h3>
+                <h3 className="center all-tasks-header">All Tasks This Week</h3>
             </div>
             <div className="row container">
                 {displayTasks.map(task => {
