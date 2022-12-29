@@ -8,11 +8,9 @@ function Categories({ days, tasks, removeTask, updateTask }) {
     const [isTrue, setIsTrue] = useState(true)
 
     function handleClick(day) {
-        // console.log(day)
         setIsTrue(false)
         setDay(day)
     }
-    // console.log(day)
 
     return(
         <div className="row">

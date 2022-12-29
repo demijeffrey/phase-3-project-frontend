@@ -4,8 +4,6 @@ import EditTaskForm from "./EditTaskForm";
 
 function TaskCard ({ task, removeTask, updateTask }) {
 
-    // console.log(task.day_id)
-
     const [isTrue, setIsTrue] = useState(false)
     const [day, setDay] = useState('')
     const dayID = task.day_id
@@ -27,15 +25,8 @@ function TaskCard ({ task, removeTask, updateTask }) {
         removeTask(id)
     }
 
-    function editClick(id) {
+    function editClick() {
       setIsTrue(!isTrue)
-        // fetch(`http://localhost:9292/tasks/${id}`, {
-        //     method: "PATCH",
-        //     headers: {
-        //         "Content-Type" : "application/json"
-        //     },
-        //     body: JSON.stringify({})
-        // })
     }
 
     function handleSubmit(e, editedDay, editedTaskName, task) {
@@ -68,7 +59,7 @@ function TaskCard ({ task, removeTask, updateTask }) {
                 <p>{day}</p>
               </div>
               <div className="card-action">
-                <a href="#" onClick={() => editClick(task.id)}>Edit ✎</a>
+                <a href="#" onClick={() => editClick()}>Edit ✎</a>
                 <a href="#" onClick={() => handleDelete(task.id)}>Delete</a>
               </div>
             </div>

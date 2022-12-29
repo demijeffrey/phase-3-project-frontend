@@ -3,7 +3,6 @@ import TaskCard from "./TaskCard"
 function AllTasks({ tasks, removeTask }) {
 
     const displayTasks = tasks.sort((a, b) => (a.day_id > b.day_id) ? 1 : -1)
-    // console.log(displayTasks)
 
     return(
         <div>

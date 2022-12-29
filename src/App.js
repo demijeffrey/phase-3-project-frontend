@@ -1,8 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import TaskCard from './Components/TaskCard';
 import NavBar from './Components/NavBar';
-import NavLinks from './Components/DayLinks';
 import { Routes, Switch, Route } from "react-router-dom";
 import Categories from './Components/Categories';
 import NewTaskForm from './Components/NewTaskForm';
@@ -30,7 +28,6 @@ function App() {
     fetchedDays()
     fetchedTasks()
   }, [])
-  // console.log(tasks)
 
   function addToTasks(newTaskCard) {
     setTasks([...tasks, newTaskCard])
