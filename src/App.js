@@ -41,11 +41,22 @@ function App() {
     setTasks(filteredTasks)
   }
 
+  function updateTask(updatedTask) {
+    const updatedTaskList = tasks.map(task => {
+      if(task.id === updatedTask.id) {
+        return updatedTask
+      } else {
+        return task
+      }
+    })
+    setTasks(updatedTaskList)
+  }
+
   return (
     <div>
       <NavBar />
       <Routes>
-        <Route path='/categories' element={<Categories days={days} tasks={tasks} removeTask={removeTask} />} />
+        <Route path='/categories' element={<Categories days={days} tasks={tasks} removeTask={removeTask} updateTask={updateTask} />} />
         <Route path='/new-task' element={<NewTaskForm />} addToTasks={addToTasks} />
         <Route path="/all-tasks" element={<AllTasks tasks={tasks} removeTask={removeTask} />} />
       </Routes>

@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import DayLinks from "./DayLinks"
 import TaskCard from "./TaskCard"
 
-function Categories({ days, tasks, removeTask }) {
+function Categories({ days, tasks, removeTask, updateTask }) {
 
     const [day, setDay] = useState('')
     const [dayTasks, setDayTasks] = useState('')
@@ -24,7 +24,7 @@ function Categories({ days, tasks, removeTask }) {
             <div className="col s10 teal">
                 {tasks.map(task => {
                     if(task.day_id === day.id){
-                        return <TaskCard task={task} removeTask={removeTask} />
+                        return <TaskCard task={task} removeTask={removeTask} updateTask={updateTask} />
                     }
                 })}
             </div>
