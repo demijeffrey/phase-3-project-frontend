@@ -18,7 +18,9 @@ This app was designed using:
 
 ## Installation and Requirements
 
-* Fork and clone both the frontend and backend repos
+* Fork and clone this repo for the frontend.
+* Fork and clone the repo for the backend from the following link:
+    https://github.com/demijeffrey/phase-3-sinatra-react-project
 
 * Have all gems and dependencies installed
 
