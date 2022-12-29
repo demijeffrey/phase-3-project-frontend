@@ -20,7 +20,7 @@ This app was designed using:
 
 * Fork and clone this repo for the frontend.
 * Fork and clone the repo for the backend from the following link:
-    https://github.com/demijeffrey/phase-3-sinatra-react-project
+    * https://github.com/demijeffrey/phase-3-sinatra-react-project
 
 * Have all gems and dependencies installed
 
