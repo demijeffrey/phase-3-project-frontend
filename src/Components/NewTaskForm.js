@@ -20,9 +20,9 @@ function NewTaskForm({ addToTasks }) {
         .then(res => res.json)
         .then(newTaskCard => {
           addToTasks(newTaskCard)
-          setNewDay('')
-          setNewTask('')
         })
+        setNewDay("")
+        setNewTask("")
       }
 
 
