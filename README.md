@@ -12,7 +12,6 @@ This app was designed using:
 * Sinatra/ActiveRecord
 * JSX, HTML, CSS
 * Materialize CSS
-* JSON-server
 
 
 
