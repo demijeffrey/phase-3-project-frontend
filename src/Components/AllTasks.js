@@ -10,7 +10,7 @@ function AllTasks({ tasks, removeTask }) {
             <div className="teal">
                 <h3 className="center grey-text text-darken-4">All Tasks This Week</h3>
             </div>
-            <div className="">
+            <div className="row container">
                 {displayTasks.map(task => {
                     return <TaskCard key={task.id} task={task} removeTask={removeTask} />
                 })}
