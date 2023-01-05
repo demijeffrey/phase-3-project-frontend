@@ -9,13 +9,13 @@ function EditTaskForm({ task, handleSubmit }) {
         <form onSubmit={(e) => handleSubmit(e, editedDay, editedTaskName, task)}>
             <input className="white" value={editedTaskName} onChange={e => setEditedTaskName(e.target.value)} />
             <select className="browser-default" value={editedDay} onChange={e => setEditedDay(e.target.value)}>
-                 <option value="15">Sunday</option>
-                 <option value="16">Monday</option>
-                 <option value="17">Tuesday</option>
-                 <option value="18">Wednesday</option>
-                 <option value="19">Thursday</option>
-                 <option value="20">Friday</option>
-                 <option value="21">Saturday</option>
+                 <option value="22">Sunday</option>
+                 <option value="23">Monday</option>
+                 <option value="24">Tuesday</option>
+                 <option value="25">Wednesday</option>
+                 <option value="26">Thursday</option>
+                 <option value="27">Friday</option>
+                 <option value="28">Saturday</option>
             </select>
             <input type="submit" />
         </form>
