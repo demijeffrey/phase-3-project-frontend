@@ -1,9 +1,22 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import EditBillForm from "./EditBillForm"
 
 function BillCard({ bill, updateBill, deleteBill }) {
 
     const [isTrue, setIsTrue] = useState(false)
+    const [monthDay, setMonthDay] = useState('')
+
+    const monthDayID = bill.month_day_id
+
+    const fetchedMonthDay = () => {
+        fetch(`http://localhost:9292/month_days/${monthDayID}`)
+        .then(res => res.json())
+        .then(newMonthDay => setMonthDay(newMonthDay.day))
+    }
+
+    useEffect(() => {
+        fetchedMonthDay()
+    })
 
     function handleSubmit(e, editedBillName,editedAmount, editedDay) {
         e.preventDefault()
@@ -38,7 +51,7 @@ function BillCard({ bill, updateBill, deleteBill }) {
                     <div className="card-content white-text">
                     <span className="card-title">{bill.bill_name}</span>
                     <p>Amount: ${bill.amount}</p>
-                    <p>Monthly Due Date: {bill.day_of_month}</p>
+                    <p>Monthly Due Date: {monthDay}</p>
                     </div>
                     <div className="card-action">
                     <a href="#" onClick={() => editClick()}>Edit ✎</a>

@@ -1,13 +1,14 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 function DayLinks({ day, handleClick }) {
     
     return(
-        <div className="grey">
+        <nav className="grey">
+            {/* <br /> */}
+            <NavLink className="waves-effect waves-light btn fixed btn-large" to={day.id} onClick={() => handleClick(day)}>{day.name}</NavLink>
             <br />
-            <a className="waves-effect waves-light btn fixed btn-large" onClick={() => handleClick(day)}>{day.name}</a>
-            <br />
-        </div>
+        </nav>
     )
 }
 

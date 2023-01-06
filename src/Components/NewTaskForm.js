@@ -36,13 +36,13 @@ function NewTaskForm({ addToTasks }) {
             <br />
             <select className="browser-default" onChange={(e) => setNewDay(e.target.value)}>
                 <option value="" disabled selected>Select Day</option>
-                <option value="22">Sunday</option>
-                <option value="23">Monday</option>
-                <option value="24">Tuesday</option>
-                <option value="25">Wednesday</option>
-                <option value="26">Thursday</option>
-                <option value="27">Friday</option>
-                <option value="28">Saturday</option>
+                <option value="29">Sunday</option>
+                <option value="30">Monday</option>
+                <option value="31">Tuesday</option>
+                <option value="32">Wednesday</option>
+                <option value="33">Thursday</option>
+                <option value="34">Friday</option>
+                <option value="35">Saturday</option>
             </select>
             <br />
             <input type="submit" />
