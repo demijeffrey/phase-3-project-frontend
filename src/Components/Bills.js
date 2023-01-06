@@ -5,9 +5,6 @@ import BillCard from "./BillCard"
 function Bills() {
 
     const [bills, setBills] = useState([])
-    // const [newBill, setNewBill] = useState('')
-    // const [newAmount, setNewAmount] = useState('')
-    // const [dayOfMonth, setDayOfMonth] = useState('')
 
     const fetchedBills = () => {
         fetch('http://localhost:9292/bills')
@@ -23,15 +20,31 @@ function Bills() {
         setBills([...bills, billCard])
     }
 
+    function updateBill(updatedBill) {
+        const updatedBillList = bills.map(bill => {
+            if(bill.id === updatedBill.id) {
+              return updatedBill
+            } else {
+              return bill
+            }
+          })
+          setBills(updatedBillList)
+    }
+
+    function deleteBill(id) {
+        const filteredBills = bills.filter(bill => bill.id !== id)
+        setBills(filteredBills)
+    }
+
     return(
         <div>
             <div className="row">
                 <div className= "col s3 grey">
                     <NewBillForm addBill={addBill} />
                 </div>
-                <div className= "col s9 teal">
+                <div className= "col s9 teal center">
                     {bills.map(bill => {
-                        return <BillCard key={bill.id} bill={bill} />
+                        return <BillCard key={bill.id} bill={bill} updateBill={updateBill} deleteBill={deleteBill} />
                     })}
                 </div>
             </div>

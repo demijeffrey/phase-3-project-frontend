@@ -21,6 +21,9 @@ function NewBillForm({ addBill }) {
         })
         .then(res => res.json)
         .then(billCard => addBill(billCard))
+        setNewAmount('')
+        setNewBill('')
+        setDayOfMonth('')
     }
 
     return(
