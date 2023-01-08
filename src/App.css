@@ -66,3 +66,8 @@
 .all-tasks-header {
   color: rgb(43, 44, 97);
 }
+
+.new-bill-form {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

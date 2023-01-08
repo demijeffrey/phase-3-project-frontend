@@ -44,8 +44,8 @@ function TaskCard ({ task, removeTask, updateTask }) {
       .then(res => res.json())
       .then(updatedTask => {
         updateTask(updatedTask)
-        setIsTrue(!isTrue)
       })
+      setIsTrue(!isTrue)
     }
 
     return(
