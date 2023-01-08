@@ -22,22 +22,51 @@ function BillCard({ bill, updateBill, deleteBill }) {
 
     function handleSubmit(e, editedBillName, editedAmount, editedDay) {
         e.preventDefault()
-        fetch(`http://localhost:9292/bills/${bill.id}`, {
-            method: "PATCH",
+        fetch('http://localhost:9292/month_days', {
+            method: 'POST',
             headers: {
-                "Content-Type" : "application/json"
+                'Content-type' : 'application/json'
             },
             body: JSON.stringify({
-              bill_name: editedBillName,
-              amount: editedAmount,
-              month_day_id: editedDay
+                day: editedDay
             })
         })
-          .then(res => res.json())
-          .then(updatedBill => {
-            updateBill(updatedBill)
-            setIsTrue(!isTrue)
-          })
+        .then(res => res.json())
+        .then(data => {
+            // console.log(data)
+            fetch(`http://localhost:9292/bills/${bill.id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type" : "application/json"
+                },
+                body: JSON.stringify({
+                  bill_name: editedBillName,
+                  amount: editedAmount,
+                  month_day_id: data.id
+                })
+            })
+              .then(res => res.json())
+              .then(updatedBill => {
+                updateBill(updatedBill)
+                setIsTrue(!isTrue)
+              })
+        })
+        // fetch(`http://localhost:9292/bills/${bill.id}`, {
+        //     method: "PATCH",
+        //     headers: {
+        //         "Content-Type" : "application/json"
+        //     },
+        //     body: JSON.stringify({
+        //       bill_name: editedBillName,
+        //       amount: editedAmount,
+        //       month_day_id: editedDay
+        //     })
+        // })
+        //   .then(res => res.json())
+        //   .then(updatedBill => {
+        //     updateBill(updatedBill)
+        //     setIsTrue(!isTrue)
+        //   })
     }
 
     function editClick() {

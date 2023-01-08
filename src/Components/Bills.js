@@ -5,7 +5,6 @@ import BillCard from "./BillCard"
 function Bills() {
 
     const [bills, setBills] = useState([])
-    // const [monthDays, setMonthDays] = useState([])
 
     const fetchedBills = () => {
         fetch('http://localhost:9292/bills')
@@ -13,15 +12,8 @@ function Bills() {
         .then(bills => setBills(bills))
     }
 
-    // const fetchedMonthDays = () => {
-    //     fetch('http://localhost:9292/month_days')
-    //     .then(res => res.json)
-    //     .then(allMonthDays => setMonthDays(allMonthDays))
-    // }
-
     useEffect(() => {
         fetchedBills()
-        // fetchedMonthDays()
     }, [])
 
     function addBill(billCard) {
@@ -35,8 +27,8 @@ function Bills() {
             } else {
               return bill
             }
-          })
-          setBills(updatedBillList)
+        })
+        setBills(updatedBillList)
     }
 
     function deleteBill(id) {

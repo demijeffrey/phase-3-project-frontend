@@ -42,7 +42,7 @@ function NewBillForm({ addBill }) {
         <form onSubmit={handleSubmit}>
             <input className="white" placeholder="bill name" value={newBill} onChange={(e) => setNewBill(e.target.value)} />
             <input className="white" placeholder="amount" value={newAmount} onChange={(e) => setNewAmount(e.target.value)} />
-            <input className="white" placeholder="day of month" value={dayOfMonth} onChange={(e) => setDayOfMonth(e.target.value)} />
+            <input className="white" placeholder="monthly due date" value={dayOfMonth} onChange={(e) => setDayOfMonth(e.target.value)} />
             <input type= "submit" />
         </form>
     )
