@@ -33,7 +33,6 @@ function BillCard({ bill, updateBill, deleteBill }) {
         })
         .then(res => res.json())
         .then(data => {
-            // console.log(data)
             fetch(`http://localhost:9292/bills/${bill.id}`, {
                 method: "PATCH",
                 headers: {
@@ -51,22 +50,6 @@ function BillCard({ bill, updateBill, deleteBill }) {
                 setIsTrue(!isTrue)
               })
         })
-        // fetch(`http://localhost:9292/bills/${bill.id}`, {
-        //     method: "PATCH",
-        //     headers: {
-        //         "Content-Type" : "application/json"
-        //     },
-        //     body: JSON.stringify({
-        //       bill_name: editedBillName,
-        //       amount: editedAmount,
-        //       month_day_id: editedDay
-        //     })
-        // })
-        //   .then(res => res.json())
-        //   .then(updatedBill => {
-        //     updateBill(updatedBill)
-        //     setIsTrue(!isTrue)
-        //   })
     }
 
     function editClick() {

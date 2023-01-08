@@ -55,7 +55,6 @@ function App() {
       <NavBar />
       <Routes>
         <Route path='/' element={<Categories days={days} tasks={tasks} removeTask={removeTask} updateTask={updateTask} />} />
-        {/* <Route path='/new-task' element={<NewTaskForm />} addToTasks={addToTasks} /> */}
         <Route path="/all-tasks" element={<AllTasks tasks={tasks} removeTask={removeTask} addToTasks={addToTasks} />} />
         <Route path="/bills" element={<Bills />} />
       </Routes>
