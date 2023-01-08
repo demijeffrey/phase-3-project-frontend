@@ -5,8 +5,10 @@ function BillCard({ bill, updateBill, deleteBill }) {
 
     const [isTrue, setIsTrue] = useState(false)
     const [monthDay, setMonthDay] = useState('')
+    const [monthDayID, setMonthDayID] = useState(bill.month_day_id)
 
-    const monthDayID = bill.month_day_id
+    // const monthDayID = bill.month_day_id
+    // console.log(bill.month_day_id)
 
     const fetchedMonthDay = () => {
         fetch(`http://localhost:9292/month_days/${monthDayID}`)
@@ -16,9 +18,9 @@ function BillCard({ bill, updateBill, deleteBill }) {
 
     useEffect(() => {
         fetchedMonthDay()
-    })
+    }, [])
 
-    function handleSubmit(e, editedBillName,editedAmount, editedDay) {
+    function handleSubmit(e, editedBillName, editedAmount, editedDay) {
         e.preventDefault()
         fetch(`http://localhost:9292/bills/${bill.id}`, {
             method: "PATCH",
@@ -28,7 +30,7 @@ function BillCard({ bill, updateBill, deleteBill }) {
             body: JSON.stringify({
               bill_name: editedBillName,
               amount: editedAmount,
-              day_of_month: editedDay
+              month_day_id: editedDay
             })
         })
           .then(res => res.json())

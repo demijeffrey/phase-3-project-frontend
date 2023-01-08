@@ -8,7 +8,18 @@ function NewBillForm({ addBill }) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch('http://localhost:9292/bills', {
+        fetch('http://localhost:9292/month_days', {
+            method: 'POST',
+            headers: {
+                'Content-type' : 'application/json'
+            },
+            body: JSON.stringify({
+                day: dayOfMonth
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            fetch('http://localhost:9292/bills', {
             method: 'POST',
             headers: {
                 'Content-type' : 'application/json'
@@ -16,11 +27,12 @@ function NewBillForm({ addBill }) {
             body: JSON.stringify({
                 bill_name: newBill,
                 amount: newAmount,
-                day_of_month: dayOfMonth
+                month_day_id: data.id
             })
         })
-        .then(res => res.json)
+        .then(res => res.json())
         .then(billCard => addBill(billCard))
+        })
         setNewAmount('')
         setNewBill('')
         setDayOfMonth('')
