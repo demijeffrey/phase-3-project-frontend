@@ -5,6 +5,8 @@ import BillCard from "./BillCard"
 function Bills() {
 
     const [bills, setBills] = useState([])
+    const [allMonthDays, setAllMonthDays] = useState([])
+    const [day, setDay] = useState('')
 
     const fetchedBills = () => {
         fetch('http://localhost:9292/bills')
@@ -12,8 +14,15 @@ function Bills() {
         .then(bills => setBills(bills))
     }
 
+    const fetchedMonthDays = () => {
+        fetch('http://localhost:9292/month_days')
+        .then(res => res.json())
+        .then(monthDays => setAllMonthDays(monthDays))
+    }
+
     useEffect(() => {
         fetchedBills()
+        fetchedMonthDays()
     }, [])
 
     function addBill(billCard) {
@@ -39,15 +48,34 @@ function Bills() {
         setBills(filteredBills)
     }
 
+    function addMonthDay(data) {
+        setAllMonthDays([...allMonthDays, data].sort((a, b) => (a.day > b.day) ? 1 : -1))
+    }
+
+    function handleClick(day){
+        setDay(day)
+    }
+
+    const displayDayBtns = allMonthDays.map(day => {
+        return <button key={day.id} onClick={() => handleClick(day)}>{day.day}</button>
+    })
+
     return(
         <div>
             <div className="row">
                 <div className= "col s3 grey">
-                    <NewBillForm addBill={addBill} />
+                    <NewBillForm addBill={addBill} addMonthDay={addMonthDay} />
+                    <br />
+                    <h5 className="center new-task-header">Days With Bills Due</h5>
+                    {displayDayBtns}
                 </div>
                 <div className= "col s9 teal center">
-                    {bills.map(bill => {
+                    {day === '' ? bills.map(bill => {
                         return <BillCard key={bill.id} bill={bill} updateBill={updateBill} deleteBill={deleteBill} />
+                    }) : bills.map(bill => {
+                        if(bill.month_day_id === day.id){
+                            return <BillCard key={bill.id} bill={bill} updateBill={updateBill} deleteBill={deleteBill} />
+                        }
                     })}
                 </div>
             </div>
