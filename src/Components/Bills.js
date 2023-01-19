@@ -8,7 +8,7 @@ function Bills() {
     const [allMonthDays, setAllMonthDays] = useState([])
     const [day, setDay] = useState('')
 
-    const renderDays = (bills) => {
+    const renderMonthDays = (bills) => {
         const billDays = bills.map(bill => {
             return bill.month_day
         })
@@ -29,7 +29,7 @@ function Bills() {
         .then(res => res.json())
         .then(bills => {
             setBills(bills)
-            renderDays(bills)
+            renderMonthDays(bills)
         })
     }
 
