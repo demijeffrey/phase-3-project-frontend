@@ -8,6 +8,24 @@ function Bills() {
     const [allMonthDays, setAllMonthDays] = useState([])
     const [day, setDay] = useState('')
 
+    console.log(bills)
+
+    // const renderDays = (bills) => {
+    //     const billDays = bills.map(bill => {
+    //         return bill.day
+    //     })
+    //     const uniqueIds = []
+    //     const uniqueDays = billDays.filter(day => {
+    //       const isDuplicate = uniqueIds.includes(day.id);
+    //       if (!isDuplicate) {
+    //         uniqueIds.push(day.id);
+    //         return true;
+    //       }
+    //       return false;
+    //     })
+    //     setAllMonthDays(uniqueDays.sort((a, b) => (a.id > b.id) ? 1 : -1))
+    // }
+
     const fetchedBills = () => {
         fetch('http://localhost:9292/bills')
         .then(res => res.json())

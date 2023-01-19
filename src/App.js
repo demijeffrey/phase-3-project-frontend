@@ -1,9 +1,8 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import NavBar from './Components/NavBar';
-import { Routes, Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Categories from './Components/Categories';
-import NewTaskForm from './Components/NewTaskForm';
 import AllTasks from './Components/AllTasks';
 import Bills from './Components/Bills';
 
@@ -13,20 +12,32 @@ function App() {
   const [days, setDays] = useState([])
   const [tasks, setTasks] = useState([])
 
-  const fetchedDays = () => {
-    fetch("http://localhost:9292/days")
-    .then(res => res.json())
-    .then(days => setDays(days))
+  const renderDays = (tasks) => {
+      const taskDays = tasks.map(task => {
+          return task.day
+      })
+      const uniqueIds = []
+      const uniqueDays = taskDays.filter(day => {
+        const isDuplicate = uniqueIds.includes(day.id);
+        if (!isDuplicate) {
+          uniqueIds.push(day.id);
+          return true;
+        }
+        return false;
+      })
+      setDays(uniqueDays.sort((a, b) => (a.id > b.id) ? 1 : -1))
   }
 
   const fetchedTasks = () => {
     fetch("http://localhost:9292/tasks")
       .then(res => res.json())
-      .then(tasks => setTasks(tasks))
+      .then(tasks => {
+        setTasks(tasks)
+        renderDays(tasks)
+      })
   }
 
   useEffect(() => {
-    fetchedDays()
     fetchedTasks()
   }, [])
 
