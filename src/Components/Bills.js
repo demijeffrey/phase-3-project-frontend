@@ -5,34 +5,8 @@ import BillCard from "./BillCard"
 function Bills() {
 
     const [bills, setBills] = useState([])
-    const [allMonthDays, setAllMonthDays] = useState([])
-    const [day, setDay] = useState('')
-
     const [monthDays, setMonthDays] = useState([])
-    // const renderMonthDays = (bills) => {
-    //     const billDays = bills.map(bill => {
-    //         return bill.month_day
-    //     })
-    //     const uniqueIds = []
-    //     const uniqueDays = billDays.filter(day => {
-    //       const isDuplicate = uniqueIds.includes(day.id);
-    //       if (!isDuplicate) {
-    //         uniqueIds.push(day.id);
-    //         return true;
-    //       }
-    //       return false;
-    //     })
-    //     setAllMonthDays(uniqueDays.sort((a, b) => (a.day > b.day) ? 1 : -1))
-    // }
-
-    // const fetchedBills = () => {
-    //     fetch('http://localhost:9292/bills')
-    //     .then(res => res.json())
-    //     .then(bills => {
-    //         setBills(bills)
-    //         renderMonthDays(bills)
-    //     })
-    // }
+    const [day, setDay] = useState('')
 
     function renderBills(monthDays) {
         const allBills = []
@@ -54,7 +28,6 @@ function Bills() {
     console.log(monthDays)
 
     useEffect(() => {
-        // fetchedBills()
         fetchedMonthDays()
     }, [])
 
@@ -82,14 +55,14 @@ function Bills() {
     }
 
     function addMonthDay(data) {
-        setAllMonthDays([...allMonthDays, data].sort((a, b) => (a.day > b.day) ? 1 : -1))
+        setMonthDays([...monthDays, data].sort((a, b) => (a.day > b.day) ? 1 : -1))
     }
 
     function handleClick(day){
         setDay(day)
     }
 
-    const displayDayBtns = allMonthDays.map(day => {
+    const displayDayBtns = monthDays.map(day => {
         return <button key={day.id} onClick={() => handleClick(day)}>{day.day}</button>
     })
 
@@ -105,11 +78,10 @@ function Bills() {
                 <div className= "col s9 teal center">
                     {day === '' ? bills.map(bill => {
                         return <BillCard key={bill.id} bill={bill} updateBill={updateBill} deleteBill={deleteBill} />
-                    }) : bills.map(bill => {
-                        if(bill.month_day_id === day.id){
+                    }) : day.bills.map(bill => {
                             return <BillCard key={bill.id} bill={bill} updateBill={updateBill} deleteBill={deleteBill} />
-                        }
-                    })}
+                        })
+                    }
                 </div>
             </div>
         </div>
