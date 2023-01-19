@@ -8,33 +8,54 @@ function Bills() {
     const [allMonthDays, setAllMonthDays] = useState([])
     const [day, setDay] = useState('')
 
-    const renderMonthDays = (bills) => {
-        const billDays = bills.map(bill => {
-            return bill.month_day
+    const [monthDays, setMonthDays] = useState([])
+    // const renderMonthDays = (bills) => {
+    //     const billDays = bills.map(bill => {
+    //         return bill.month_day
+    //     })
+    //     const uniqueIds = []
+    //     const uniqueDays = billDays.filter(day => {
+    //       const isDuplicate = uniqueIds.includes(day.id);
+    //       if (!isDuplicate) {
+    //         uniqueIds.push(day.id);
+    //         return true;
+    //       }
+    //       return false;
+    //     })
+    //     setAllMonthDays(uniqueDays.sort((a, b) => (a.day > b.day) ? 1 : -1))
+    // }
+
+    // const fetchedBills = () => {
+    //     fetch('http://localhost:9292/bills')
+    //     .then(res => res.json())
+    //     .then(bills => {
+    //         setBills(bills)
+    //         renderMonthDays(bills)
+    //     })
+    // }
+
+    function renderBills(monthDays) {
+        const allBills = []
+        const dayBills = monthDays.map(day => day.bills)
+        dayBills.map(dayBill => {
+          dayBill.forEach(bill => allBills.push(bill))
         })
-        const uniqueIds = []
-        const uniqueDays = billDays.filter(day => {
-          const isDuplicate = uniqueIds.includes(day.id);
-          if (!isDuplicate) {
-            uniqueIds.push(day.id);
-            return true;
-          }
-          return false;
-        })
-        setAllMonthDays(uniqueDays.sort((a, b) => (a.day > b.day) ? 1 : -1))
+        setBills(allBills)
     }
 
-    const fetchedBills = () => {
-        fetch('http://localhost:9292/bills')
+    const fetchedMonthDays = () => {
+        fetch('http://localhost:9292/month_days')
         .then(res => res.json())
-        .then(bills => {
-            setBills(bills)
-            renderMonthDays(bills)
+        .then(monthDays => {
+            setMonthDays(monthDays)
+            renderBills(monthDays)
         })
     }
+    console.log(monthDays)
 
     useEffect(() => {
-        fetchedBills()
+        // fetchedBills()
+        fetchedMonthDays()
     }, [])
 
     function addBill(billCard) {

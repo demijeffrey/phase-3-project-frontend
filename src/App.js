@@ -12,31 +12,6 @@ function App() {
   const [days, setDays] = useState([])
   const [tasks, setTasks] = useState([])
 
-  // const renderDays = (tasks) => {
-  //     const taskDays = tasks.map(task => {
-  //         return task.day
-  //     })
-  //     const uniqueIds = []
-  //     const uniqueDays = taskDays.filter(day => {
-  //       const isDuplicate = uniqueIds.includes(day.id);
-  //       if (!isDuplicate) {
-  //         uniqueIds.push(day.id);
-  //         return true;
-  //       }
-  //       return false;
-  //     })
-  //     setDays(uniqueDays.sort((a, b) => (a.id > b.id) ? 1 : -1))
-  // }
-
-  // const fetchedTasks = () => {
-  //   fetch("http://localhost:9292/tasks")
-  //     .then(res => res.json())
-  //     .then(tasks => {
-  //       setTasks(tasks)
-  //       // renderDays(tasks)
-  //     })
-  // }
-
   function renderTasks (days) {
     const allTasks = []
     const dayTasks = days.map(day => day.tasks)
@@ -85,7 +60,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path='/' element={<Categories days={days} tasks={tasks} removeTask={removeTask} updateTask={updateTask} />} />
-        <Route path="/all-tasks" element={<AllTasks tasks={tasks} removeTask={removeTask} addToTasks={addToTasks} updateTask={updateTask} />} />
+        <Route path="/all-tasks" element={<AllTasks days={days} tasks={tasks} removeTask={removeTask} addToTasks={addToTasks} updateTask={updateTask} />} />
         <Route path="/bills" element={<Bills />} />
       </Routes>
     </div>
