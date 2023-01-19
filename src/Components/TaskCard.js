@@ -1,22 +1,10 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import '../App.css';
 import EditTaskForm from "./EditTaskForm";
 
-function TaskCard ({ task, removeTask, updateTask }) {
+function TaskCard ({ task, removeTask, updateTask, taskDay }) {
 
     const [isTrue, setIsTrue] = useState(false)
-    const [day, setDay] = useState('')
-    const dayID = task.day_id
-
-    const fetchedDay = () => {
-        fetch(`http://localhost:9292/days/${dayID}`)
-        .then(res => res.json())
-        .then(day => setDay(day.name))
-      }
-
-    useEffect(() => {
-        fetchedDay()
-    }, [])
 
     function handleDelete(id) {
         fetch(`http://localhost:9292/tasks/${id}`, {
@@ -56,7 +44,7 @@ function TaskCard ({ task, removeTask, updateTask }) {
             <div className="card blue-grey darken-1">
               <div className="card-content white-text">
                 <span className="card-title">{task.task_name}</span>
-                <p>{day}</p>
+                <p>{taskDay}</p>
               </div>
               <div className="card-action">
                 <a href="#" onClick={() => editClick()}>Edit ✎</a>

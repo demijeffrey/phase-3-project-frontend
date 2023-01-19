@@ -13,7 +13,7 @@ function AllTasks({ tasks, removeTask, addToTasks, updateTask }) {
                 </div>
              <div className= "col s9 teal center">
             {displayTasks.map(task => {
-                    return <TaskCard key={task.id} task={task} removeTask={removeTask} updateTask={updateTask} />
+                    return <TaskCard key={task.id} taskDay={task.day_id} task={task} removeTask={removeTask} updateTask={updateTask} />
             })}
             </div>
         </div>
