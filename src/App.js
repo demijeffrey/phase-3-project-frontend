@@ -14,13 +14,12 @@ function App() {
 
   function renderTasks (days) {
     const allTasks = []
-    const dayTasks = days.map(day => day.tasks)
-    dayTasks.map(dayTask => {
-      dayTask.forEach(task => allTasks.push(task))
-    })
+    days.map(day => day.tasks.forEach((task) => {
+        task.day = day.name
+        allTasks.push(task)
+    }))
     setTasks(allTasks)
   }
-  console.log(tasks)
 
   const fetchedDays = () => {
     fetch('http://localhost:9292/days')

@@ -25,7 +25,7 @@ function AllTasks({ tasks, removeTask, addToTasks, updateTask, days }) {
              <div className= "col s9 teal center">
             {displayTasks.map(task => {
                     // dayNames(task)
-                    return <TaskCard key={task.id} taskDay={task.day_id} task={task} removeTask={removeTask} updateTask={updateTask} />
+                    return <TaskCard key={task.id} taskDay={task.day} task={task} removeTask={removeTask} updateTask={updateTask} />
             })}
             </div>
         </div>

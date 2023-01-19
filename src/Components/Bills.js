@@ -25,7 +25,6 @@ function Bills() {
             renderBills(monthDays)
         })
     }
-    console.log(monthDays)
 
     useEffect(() => {
         fetchedMonthDays()
