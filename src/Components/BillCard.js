@@ -5,10 +5,8 @@ function BillCard({ bill, updateBill, deleteBill }) {
 
     const [isTrue, setIsTrue] = useState(false)
     const [monthDay, setMonthDay] = useState('')
-    const [monthDayID, setMonthDayID] = useState(bill.month_day_id)
 
-    // const monthDayID = bill.month_day_id
-    // console.log(bill.month_day_id)
+    const monthDayID = bill.month_day_id
 
     const fetchedMonthDay = () => {
         fetch(`http://localhost:9292/month_days/${monthDayID}`)
