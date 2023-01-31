@@ -2,7 +2,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import NavBar from './Components/NavBar';
 import { Routes, Route } from "react-router-dom";
-import Categories from './Components/Categories';
+import TasksByDay from './Components/TasksByDay';
 import AllTasks from './Components/AllTasks';
 import Bills from './Components/Bills';
 
@@ -14,7 +14,7 @@ function App() {
 
   function renderTasks (days) {
     const allTasks = []
-    days.map(day => day.tasks.forEach((task) => {
+    days.map(day => day.tasks.map((task) => {
         task.day = day.name
         allTasks.push(task)
     }))
@@ -35,7 +35,14 @@ function App() {
   }, [])
 
   function addToTasks(newTaskCard) {
-    setTasks([...tasks, newTaskCard])
+    days.filter(day => {
+      if(day.id === newTaskCard.day_id){
+        newTaskCard.day = day.name
+        setTasks([...tasks, newTaskCard])
+      } else {
+        return null
+      }
+    })
   }
 
   function removeTask(id) {
@@ -44,22 +51,26 @@ function App() {
   }
 
   function updateTask(updatedTask) {
-    const updatedTaskList = tasks.map(task => {
-      if(task.id === updatedTask.id) {
-        return updatedTask
-      } else {
-        return task
-      }
-    })
-    setTasks(updatedTaskList)
+      days.filter(day => {
+        if(day.id === updatedTask.day_id){
+          updatedTask.day = day.name
+          setTasks(tasks.map(task => {
+            if(task.id === updatedTask.id) {
+              return updatedTask
+            } else {
+              return task
+            }
+          }))
+        }
+      })
   }
 
   return (
     <div>
       <NavBar />
       <Routes>
-        <Route path='/' element={<Categories days={days} tasks={tasks} removeTask={removeTask} updateTask={updateTask} />} />
-        <Route path="/all-tasks" element={<AllTasks days={days} tasks={tasks} removeTask={removeTask} addToTasks={addToTasks} updateTask={updateTask} />} />
+        <Route path='/' element={<TasksByDay days={days} tasks={tasks} removeTask={removeTask} updateTask={updateTask} />} />
+        <Route path="/all-tasks" element={<AllTasks tasks={tasks} removeTask={removeTask} addToTasks={addToTasks} updateTask={updateTask} />} />
         <Route path="/bills" element={<Bills />} />
       </Routes>
     </div>

@@ -7,14 +7,14 @@ function NewTaskForm({ addToTasks }) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch("http://localhost:9292/tasks", {
+        fetch(`http://localhost:9292/tasks`, {
           method: "POST",
           headers: {
             "Content-Type" : "application/json",
           },
           body: JSON.stringify({
             task_name: newTask,
-            day_id: newDay,
+            day_id: newDay
           }),
         })
         .then(res => res.json())
@@ -24,7 +24,6 @@ function NewTaskForm({ addToTasks }) {
         setNewDay("0")
         setNewTask("")
       }
-
 
     return (
       <div>

@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import DayLinks from "./DayLinks"
 import TaskCard from "./TaskCard"
 
-function Categories({ days, removeTask, updateTask }) {
+function TasksByDay({ days, removeTask, updateTask }) {
 
     const [day, setDay] = useState({tasks: []})
     const [isTrue, setIsTrue] = useState(true)
@@ -31,4 +31,4 @@ function Categories({ days, removeTask, updateTask }) {
     )
 }
 
-export default Categories
+export default TasksByDay
