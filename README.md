@@ -1,4 +1,4 @@
-# Daily Task Planner and Monthly Bill Tracker
+# Daily Task Planner & Monthly Bill Tracker
 
 This task planner allows for easy organization of daily to-do's by keeping all your ducks in a row week by week. See all tasks on the agenda for the whole week or tasks day by day.
 
